@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Portfolio - Slideshow</title>
+    <script src="js/jquery-1.8.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.imagesloaded.min.js" type="text/javascript"></script>
+    <script src="js/jquery.lazyload.min.js" type="text/javascript"></script>
+    <script src="js/spin.min.js" type="text/javascript"></script>
+    <script src="js/jquery.scrollTo-1.4.3.1-min.js" type="text/javascript"></script>
+    <script src="js/portfolio.js" type="text/javascript"></script>
+
+    <style>
+        #gallery {
+            width: 100%;
+            height: 570px;
+            overflow: hidden;
+        }
+        #gallery .spinner {
+        }
+        #gallery .photo {
+            display: inline-block;
+        }
+
+        #gallery .darken-photo img {
+            background: black;
+            opacity: 0.3;
+        }
+
+        #gallery {
+            position: relative;
+        }
+
+        #gallery .photo {
+            position: absolute;
+        }
+
+        #gallery .photo img {
+        }
+
+        .gallery-nav {
+            font-family: Helvetica, Arial, sans-serif;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .gallery-nav span {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+
+
+        var dfd = $('#gallery .photo img').imagesLoaded();
+        // Notified
+        dfd.progress( function( isBroken, $images, $proper, $broken ){
+        // function scope (this) is a jQuery object with image that has just finished loading
+        // callback provides four arguments:
+        // isBroken: boolean value of whether the loaded image (this) is broken
+        // $images:  jQuery object with all images in set
+        // $proper:  jQuery object with properly loaded images so far
+        // $broken:  jQuery object with broken images so far
+        console.log( 'Loading progress: ' + ( $proper.length + $broken.length ) + ' out of ' + $images.length );
+        });
+
+        $(document).ready(function() {
+
+            // $("#gallery .photo img").lazyload({ effect: "fadeIn" });
+            var p = $("#gallery").portfolio();
+            p.init();
+
+            $('.gallery-nav span').click(function(){
+                if ($(this).hasClass('previous')) {
+                    p.prev();
+                }
+                else if ($(this).hasClass('next')) {
+                    p.next();
+                }
+            });
+        }); // end of ready();
+
+    </script>
+</head>
+
+<body>
+
+<h1>Slides</h1>
+<div id="content">
+
+    <div id="gallery">
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/1.jpeg" data-title="Photo One" height="570" alt="" />
+        </div>
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/2.jpeg" height="570" alt="" />
+        </div>
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/3.jpeg" height="570" alt="" />
+        </div>
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/4.jpeg" height="570" alt="" />
+        </div>
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/5.jpeg" height="570" alt="" />
+        </div>
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/6.jpeg" height="570" alt="" />
+        </div>
+        <div class="item photo">
+            <img src="images/pixel.gif" data-original="https://dl.dropbox.com/u/1218282/slideshow/7.jpeg" height="570" alt="" />
+        </div>
+    </div> <!-- .gallery -->
+
+    <div class="gallery-nav">
+        <span class="previous"> Previous</span> /
+        <span class="next">Next <span>
+    </div>
+
+
+</div>
+
+</body>
+</html>
