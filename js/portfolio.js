@@ -26,13 +26,11 @@
 
     $.fn.portfolio = function(settings) {
         
-        var portfolio = this;
+        var portfolio = this, gallery = this;
 
         $.extend(this, {
             version: "0.1v",
             init: function() {
-
-                var gallery = this;
 
                 //
                 // set all images element attribute loaded to false and hide, bcoz the
@@ -101,7 +99,7 @@
                         // $(gallery).find(".photo").addClass('darken-photo');
                         // $(this).removeClass('darken-photo');
 
-                        portfolio.slideTo($(this).find('img'));
+                        portfolio.slideTo($(this));
                     }
                 }); // click()
 
@@ -114,7 +112,6 @@
             }, // init
 
             next: function() {
-                console.log('next: current viewing image', currentViewingImage);
 
                 // console.log($(currentViewingImage).nextAll('img[loaded=false]').first().data('position'), $(currentViewingImage).data('position'));
                 var distance = $(currentViewingImage).nextAll('img[loaded=false]').first().data('position') - $(currentViewingImage).data('position');
@@ -160,6 +157,7 @@
                     portfolio.spinner(spinner_target);
                 }
                 */
+                console.log('next: current viewing image', currentViewingImage);
             },
 
             prev: function() {
@@ -172,7 +170,7 @@
                     currentViewingImage = $(currentViewingImage).prev();
                 }
 
-                console.log($(currentViewingImage));
+                console.log('prev: current viewing image', currentViewingImage);
             },
 
             slideTo: function(img) {
@@ -254,7 +252,7 @@
 
                         }); // each()
 
-                        $(gallery).find('.spinner-container').css({'left': (offset_left+10)+'px'}).show();
+                        $(gallery).find('.spinner-container').css({'width': '100px', 'left': (offset_left+10)+'px'}).show();
                         if (totalLoaded === $(gallery).find('img').length) {
                             $(gallery).find('.spinner-container').css({'left': (offset_left+10)+'px'}).hide();
                         }
