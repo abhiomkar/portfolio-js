@@ -10,15 +10,16 @@
         autoplay: false,
         firstLoadCount: 4,
         enableKeyboardNavigation: true,
-        loop: true
+        loop: false,
+        easingMethod: 'easeOutQuint'
     },
-    widths = [],
     currentViewingImage,
     totalLoaded = 0,
     offset_left = 0
 ;
 
-    // prototype
+    // prototypes
+    /* sum */
     Array.prototype.sum = function() {
         return this.reduce(function(a,b){return a+b;});
     }
@@ -33,22 +34,58 @@
 
                 var gallery = this;
 
-                $(this).find(".photo").css("display", 'none');
+                //
+                // set all images element attribute loaded to false and hide, bcoz the
+                // game is not yet started :)
+                $(this).find("img").attr('loaded', 'false');
+
+                // mark first & last images
+                $(this).find("img").first().attr('first', 'true');
+                $(this).find("img").last().attr('last', 'true');
+
+                $(this).find("img").css('display', 'none');
+
+                // set positions for each image
+                $(this).find("img").each(function(index) {
+                    $(this).data('position', index);
+                });
+                
+                $(gallery).append('<span class="spinner-container"></span>');
+                portfolio.spinner($('.spinner-container'));
 
                 // show spinner while the images are being loaded...
-                portfolio.spinner(this);
+                // portfolio.spinner(this);
 
                 portfolio.loadNextImages(4);
                 
                 // First Image
-                currentViewingImage = $(this).find(".photo img").first();
+                currentViewingImage = $(this).find("img").first();
 
                 // Events
 
-                /* Click */
-                $(this).find(".photo").click(function(event) {
+                /* Swipe Left */
+                $(this).swipe( {
+                    swipeLeft: function() {
+                                    portfolio.next();
+                                },
+                    swipeRight: function() {
+                                    portfolio.prev();
+                                }
+                });
 
-                    if (currentViewingImage[0] === $(this).find('img')[0]) {
+                $(this).find('img').on('movestart', function(e) {
+                    console.log('movestart');
+                    if ((e.distX > e.distY && e.distX < -e.distY) ||
+                        (e.distX < e.distY && e.distX > -e.distY)) {
+                        e.preventDefault();
+                            portfolio.next();
+                    }
+                });
+
+                /* Click */
+                $(this).find("img").click(function(event) {
+
+                    if (currentViewingImage[0] === $(this)[0]) {
                         // If clicked on the current viewing image
                         // then scroll to next image
                         // $(gallery).find(".photo").addClass('darken-photo');
@@ -75,70 +112,64 @@
 
 
             }, // init
-            
+
             next: function() {
-                // If lastImage and loop:
-                //  scrollTo(firstImage)
-                // ElseIf lastLoadedImage:
-                //  
-                //  
-                var lastImage = false, 
-                    lastLoadedImage = false;
+                console.log('next: current viewing image', currentViewingImage);
 
-                if (!!!$(currentViewingImage).parent().next().find("img").length) {
-                    lastImage = true;
-                    console.log("lastImage");
-                }
+                // console.log($(currentViewingImage).nextAll('img[loaded=false]').first().data('position'), $(currentViewingImage).data('position'));
+                var distance = $(currentViewingImage).nextAll('img[loaded=false]').first().data('position') - $(currentViewingImage).data('position');
 
-                if (!lastImage && !!!$(currentViewingImage).parent().next().find("img.loaded").length) {
-                    lastLoadedImage = true;
-                    console.log("lastLoadedImage");
-                }
-
-                if(false) {
-                    $(currentViewingImage).parent().next().find("img")
+                console.log(distance);
+                if(distance < 4) {
+                    console.log('next: preload next 4 images');
                     portfolio.loadNextImages(4);
-                    $(currentViewingImage).parent().next().find("img").load(function(){
-                        // portfolio.next();
-                    });
                 }
 
-                if(lastImage && this.loop) {
-                    $(gallery).scrollTo(0, 500, {axis: 'x'});
-                    currentViewingImage = $(gallery).find('.photo img').first();
-                    // otherwise, don't change currentViewingImage
+                if($(currentViewingImage).attr('last') === 'true') {
+                    // if on last image and if loop is on 
+                    if(portfolio.loop) {
+                        // go to first image 
+                        console.log('last', 'loop: on');
+
+                        $(gallery).scrollTo(0, 500, {axis: 'x', easing: portfolio.easingMethod});
+                        currentViewingImage = $(gallery).find('img').first();
+                    }
+                    else {
+                        console.log('last', 'loop: off');
+                    }
                 }
-                else {
-                    $(gallery).scrollTo($(currentViewingImage).parent().next().find("img").data("offset-left"), 500, {axis: 'x'});
-                    currentViewingImage = $(currentViewingImage).parent().next().find("img");
+                // if next image is already loaded
+                else if ($(currentViewingImage).next().attr('loaded') === 'true') {
+                    // go to next image
+                    $(gallery).scrollTo($(currentViewingImage).next().data("offset-left"), 800, {axis: 'x', easing: portfolio.easingMethod});
+                    currentViewingImage = $(currentViewingImage).next();
+                }
+                // if next image is not yet loaded
+                else if ($(currentViewingImage).next().attr('loaded') === 'false') {
+                    // show the spinner and prepare to load next images
+                    console.log('next images are being loaded...');
                 }
 
                 // console.log($(currentViewingImage));
                 // console.log(gallery.offsetWidth + gallery.scrollLeft, gallery.scrollWidth);
+                /*
                 if (gallery.offsetWidth + gallery.scrollLeft >= gallery.scrollWidth) {
                     console.log('scrollEnd');
-                    portfolio.loadNextImages(4);
-                    $(currentViewingImage).parent().next().find("img").load(function(){
-                        console.log('next image is loaded...');
-                    });
+                    var spinner_target = $(currentViewingImage).after('<span class="spinner-container"></span>');
+                    $(gallery).scrollTo($(currentViewingImage).data("offset-left") + 100, 500, {axis: 'x'});
+                    portfolio.spinner(spinner_target);
                 }
+                */
             },
 
             prev: function() {
-                var firstImage = false;
-                if (!!!$(currentViewingImage).parent().prev().find("img").length) {
-                    firstImage = true;
-                    console.log("firstImage");
-                }
-
-                if(firstImage && this.loop) {
-                    currentViewingImage = $(gallery).find('.photo img').last();
-                    scrollLeftTarget = $(currentViewingImage).data('offset-left');
-                    $(gallery).scrollTo(scrollLeftTarget, 500, {axis: 'x'});
+                if($(currentViewingImage).attr('first') === 'true') {
+                    // If on first Image stay there, do not scroll
                 }
                 else {
-                    $(gallery).scrollTo($(currentViewingImage).parent().prev().find("img").data("offset-left"), 500, {axis: 'x'});
-                    currentViewingImage = $(currentViewingImage).parent().prev().find("img").length?$(currentViewingImage).parent().prev().find("img"):currentViewingImage;
+                    // go to prev image
+                    $(gallery).scrollTo($(currentViewingImage).prev().data("offset-left"), 500, {axis: 'x', easing: portfolio.easingMethod});
+                    currentViewingImage = $(currentViewingImage).prev();
                 }
 
                 console.log($(currentViewingImage));
@@ -147,7 +178,7 @@
             slideTo: function(img) {
                 scrollLeftTarget = $(img).data('offset-left');
 
-                $(gallery).scrollTo(scrollLeftTarget, 500, {axis: 'x'});
+                $(gallery).scrollTo(scrollLeftTarget, 500, {axis: 'x', easing: portfolio.easingMethod});
                 currentViewingImage = $(img);
                 console.log($(currentViewingImage));
             },
@@ -177,22 +208,34 @@
             },
 
             loadNextImages: function(count) {
-                    console.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
-                    $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count).each(function(index) {
-                    // current img element
-                    var img = this;
-                    $(this).attr("src", $(this).attr("data-original"));
-                    var img_width=0; 
+                    // console.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
+                    $(gallery).find("img").slice(totalLoaded, totalLoaded + count).each(function(index) {
+                        // current img element
+                        var cur_img = this;
 
-                    setTimeout(function(img){
-                        $(this).imagesLoaded(function(){
-                            // console.log($(img));
-                            // console.log($(img).width());
+                        cur_img.src = $(cur_img).data('src');
+                        $(cur_img).attr('loaded', 'loading');
+                    }); // each()
+
+                     // .imagesLoaded callback on images having src attribute but not loaded yet
+                     // on otherwords, filter only loading images
+                     $(gallery).find('img[src][loaded=loading]').imagesLoaded(function($img_loaded){
+                            // var img = this;
+                            // d_img = $(gallery).find('img').eq($(img).data('position'));
+                            // let the position of image be same
+                            // $(d_img).replaceWith(img);
+
+                        console.log('images loaded:');
+                        console.log($img_loaded);
+                        $img_loaded.each(function(index) {
+                            var img = this;
                             $(img).data('offset-left', offset_left);
 
-                            $(img).parent().css({'left': offset_left+'px', opacity: '1'});
-                            $(gallery).find('.spinner').hide().remove();
-                            $(img).parent().fadeIn('slow');
+                            // Inorder to fadeIn effect to work, make the new
+                            // img element invisible by 'display: none'
+                            $(img).css({'left': offset_left+'px', 'display': 'none'});
+                            $(gallery).find('.spinner-container').hide();
+                            $(img).fadeIn('slow');
                             // $(img).parent().css({display: 'inline-block', opacity: '1'});
                             // $(img).parent().animate({'left': offset_left+'px', opacity: '1'}, 1000);
                             // $(img).fadeIn('slow');
@@ -201,21 +244,22 @@
                             console.log('img_width: ', img_width);
 
 
-                            // $(img_width);
                             offset_left += img_width + 5;
 
                             totalLoaded += 1;
-                            console.log('totalLoaded', totalLoaded)
+                            // console.log('totalLoaded', totalLoaded)
 
                             $(img).data('width', img_width);
-                            $(img).addClass('loaded');
+                            $(img).attr('loaded', 'true');
 
-                            console.log('loaded: ', img);
+                        }); // each()
 
-                        }); // load()
-                    }, 10, img); // setTimeout()
-                }); // each()
-   
+                        $(gallery).find('.spinner-container').css({'left': (offset_left+10)+'px'}).show();
+                        if (totalLoaded === $(gallery).find('img').length) {
+                            $(gallery).find('.spinner-container').css({'left': (offset_left+10)+'px'}).hide();
+                        }
+                    }); // imagesLoaded()
+  
             } // loadNextImages
         }); // extend()
 
