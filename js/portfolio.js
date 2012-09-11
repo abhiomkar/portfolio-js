@@ -42,7 +42,7 @@
                 $(this).css({
                     width: '100%',
                     height: portfolio.height,
-                    overflow: 'hidden',
+                    overflow: 'scroll',
                     position: 'relative'
                 });
 
@@ -86,6 +86,9 @@
                     $(gallery).find('img').not('.active').animate({opacity: '0.2'});
                     $(gallery).find('img.active').animate({opacity: '1'});
                 }
+
+                // LionBar
+                $(this).lionbars();
 
                 // Events
 
