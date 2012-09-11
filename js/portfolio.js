@@ -42,7 +42,8 @@
                 $(this).css({
                     width: '100%',
                     height: portfolio.height,
-                    overflow: 'scroll',
+                    'overflow-x': 'scroll',
+                    'overflow-y': 'hidden',
                     position: 'relative'
                 });
 
@@ -88,7 +89,7 @@
                 }
 
                 // LionBar
-                $(this).lionbars();
+                // $(this).lionbars();
 
                 // Events
 
@@ -134,8 +135,14 @@
                     }
                 }); // click()
 
-                $(window).scroll(function() {
-                    // $(gallery).find(".photo").removeClass('darken-photo');
+                $(this).scroll(function() {
+                        if (gallery[0].offsetWidth + gallery.scrollLeft() >= gallery[0].scrollWidth) {
+
+                            if (totalLoaded < $(gallery).find('img').length) {
+                                console.log('scroll ended - loading next 4');
+                                portfolio.loadNextImages(4);
+                            }
+                        }
                 });
 
 
