@@ -139,7 +139,7 @@
                         if (gallery[0].offsetWidth + gallery.scrollLeft() >= gallery[0].scrollWidth) {
 
                             if (totalLoaded < $(gallery).find('img').length) {
-                                console.log('scroll ended - loading next 4');
+                                console.log('scroll ended');
                                 portfolio.loadNextImages(4);
                             }
                         }
@@ -295,17 +295,33 @@
 
             loadNextImages: function(count) {
                     // console.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
-                    $(gallery).find("img").slice(totalLoaded, totalLoaded + count).each(function(index) {
-                        // current img element
-                        var cur_img = this;
+                    var nextImages;
+                    if(currentViewingImage === undefined) {
+                        // load first few pictures - gallery init
+                        nextImages = $(gallery).find("img[loaded=false]").slice(0, count);
+                        $(nextImages).each(function(index) {
+                            // current img element
+                            var cur_img = this;
 
-                        cur_img.src = $(cur_img).data('src');
-                        $(cur_img).attr('loaded', 'loading');
-                    }); // each()
+                            cur_img.src = $(cur_img).data('src');
+                            $(cur_img).attr('loaded', 'loading');
+                        }); // each()
+                    }
+                    else {
+                        // load next few pictures - 'count'
+                        nextImages = $(currentViewingImage).nextAll("img[loaded=false]").slice(0, count);
+                        $(nextImages).each(function(index) {
+                            // current img element
+                            var cur_img = this;
+
+                            cur_img.src = $(cur_img).data('src');
+                            $(cur_img).attr('loaded', 'loading');
+                        }); // each()
+                    }
 
                      // .imagesLoaded callback on images having src attribute but not loaded yet
                      // on otherwords, filter only loading images
-                     $(gallery).find('img[src][loaded=loading]').imagesLoaded(function($img_loaded){
+                     $(nextImages).imagesLoaded(function($img_loaded){
 
                         console.log('images loaded:');
                         console.log($img_loaded);
