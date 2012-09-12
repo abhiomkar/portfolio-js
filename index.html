@@ -4,6 +4,8 @@
 <head>
     <title>Portfoliojs - jQuery plugin</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
     <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
     
 
@@ -28,10 +30,6 @@
         #header {
             margin-bottom: 10px;
             box-shadow: -3px 2px 7px #CCC;
-        }
-
-        #gallery {
-            margin-left: 6px;
         }
 
         #gallery img {
@@ -77,6 +75,12 @@
         .hint {
             color: #999;
             padding: 10px;
+        }
+
+        .box-bottom {
+            padding: 0 15px;
+            box-shadow: -3px -3px 7px #CCC;
+            margin-top: 10px;
         }
 
         .gallery-nav {
@@ -146,19 +150,24 @@
 <div id="content">
 
     <div id="gallery">
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/1.jpeg" data-title="Photo One" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/2.jpeg" data-title="Photo Two" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/3.jpeg" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/4.jpeg" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/5.jpeg" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/6.jpeg" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/7.jpeg" />
-        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/8.jpeg" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/1.jpg" data-title="Photo One" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/2.jpg" data-title="Photo Two" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/3.jpg" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/4.jpg" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/5.jpg" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/6.jpg" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/7.jpg" />
+        <img data-src="https://dl.dropbox.com/u/1218282/slideshow/8.jpg" />
     </div> <!-- .gallery -->
 
-    <div class="small hint pull-right">
-        Hint: Use Arrow Keys or Slide to Navigate
+    <div class="box-bottom">
+
     </div>
+
+    <div class="small hint pull-right">
+        Hint: Use Arrow Keys (or Slide) to Navigate
+    </div>
+
     <div class="gallery-nav small">
         <span class="previous">&nbsp;</span>
         <span class="next"> &nbsp;</span>

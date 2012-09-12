@@ -12,7 +12,7 @@
 
     var defaults = {
         autoplay: false,
-        firstLoadCount: 2,
+        firstLoadCount: 4,
         enableKeyboardNavigation: true,
         loop: false,
         easingMethod: 'easeOutQuint',
@@ -22,7 +22,8 @@
     },
     currentViewingImage,
     totalLoaded = 0,
-    offset_left = 0
+    offset_left = 6,
+    imageLoadedCalled = false
 ;
 
     // prototypes
@@ -147,7 +148,7 @@
                             if (totalLoaded < $(gallery).find('img').length) {
                                 console.log('scroll ended');
                                 currentViewingImage = $(gallery).find('img[loaded=true]').last();
-                                portfolio.loadNextImages(4);
+                                portfolio.loadNextImages(6);
                             }
                         }
                 });
@@ -164,7 +165,7 @@
                 console.log(distance);
                 if(distance < 4) {
                     console.log('next: preload next 4 images');
-                    portfolio.loadNextImages(4);
+                    portfolio.loadNextImages(6);
                 }
 
                 if($(currentViewingImage).attr('last') === 'true') {
@@ -192,7 +193,7 @@
                 // if next image is already loaded
                 else if ($(currentViewingImage).next().attr('loaded') === 'true') {
                     // go to next image
-                    $(gallery).scrollTo($(currentViewingImage).next().data("offset-left"), 800, {axis: 'x', easing: portfolio.easingMethod});
+                    $(gallery).scrollTo($(currentViewingImage).next().data("offset-left") - 5, 800, {axis: 'x', easing: portfolio.easingMethod});
                     currentViewingImage = $(currentViewingImage).next();
 
                     $(gallery).find('img').removeClass('active');
@@ -227,7 +228,7 @@
                 }
                 else {
                     // go to prev image
-                    $(gallery).scrollTo($(currentViewingImage).prev().data("offset-left"), 500, {axis: 'x', easing: portfolio.easingMethod});
+                    $(gallery).scrollTo($(currentViewingImage).prev().data("offset-left") - 5, 500, {axis: 'x', easing: portfolio.easingMethod});
                     currentViewingImage = $(currentViewingImage).prev();
 
                     $(gallery).find('img').removeClass('active');
@@ -245,7 +246,7 @@
             slideTo: function(img) {
                 scrollLeftTarget = $(img).data('offset-left');
 
-                $(gallery).scrollTo(scrollLeftTarget, 500, {axis: 'x', easing: portfolio.easingMethod});
+                $(gallery).scrollTo(scrollLeftTarget - 5, 500, {axis: 'x', easing: portfolio.easingMethod});
                 currentViewingImage = $(img);
 
                 $(gallery).find('img').removeClass('active');
@@ -302,6 +303,7 @@
 
             loadNextImages: function(count) {
                     // console.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
+                if (!imageLoadedCalled) {
                     var nextImages;
                     if(currentViewingImage === undefined) {
                         // load first few pictures - gallery init
@@ -362,7 +364,12 @@
                             portfolio.spinner.remove();
                            // $(gallery).find('.spinner-container').css({'left': (offset_left+10)+'px'}).hide();
                         }
+                        imageLoadedCalled = false;
+
                     }); // imagesLoaded()
+
+                    imageLoadedCalled = true;
+                } // if(!imageLoadedCalled)
   
             }, // loadNextImages
             navigation: {
