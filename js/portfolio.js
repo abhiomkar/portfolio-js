@@ -140,6 +140,7 @@
 
                             if (totalLoaded < $(gallery).find('img').length) {
                                 console.log('scroll ended');
+                                currentViewingImage = $(gallery).find('img[loaded=true]').last();
                                 portfolio.loadNextImages(4);
                             }
                         }
@@ -309,7 +310,7 @@
                     }
                     else {
                         // load next few pictures - 'count'
-                        nextImages = $(currentViewingImage).nextAll("img[loaded=false]").slice(0, count);
+                        nextImages = $(currentViewingImage).nextAll("img").slice(0, count).filter('img[loaded=false]');
                         $(nextImages).each(function(index) {
                             // current img element
                             var cur_img = this;
