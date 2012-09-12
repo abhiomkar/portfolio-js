@@ -50,23 +50,57 @@
             font-size: 14px;
         }
 
+        a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+
         .tagline {
             display: inline-block;
             margin-left: 10px;
         }
 
+        .small {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 12px;
+        }
+
         .gallery-nav {
             padding: 10px 15px;
-            box-shadow: -3px -2px 7px #CCC;
-            font-family: Helvetica, Arial, sans-serif;
+            box-shadow: -3px -3px 7px #CCC;
             margin-top: 10px;
-            font-size: 12px;
             font-weight: bold;
             color: #555;
         }
         .gallery-nav span {
             cursor: pointer;
+            background: #ccc;
         }
+
+        .gallery-nav .previous {
+            background: url('images/arrow-left.png') center left no-repeat;
+            padding-left: 21px;
+        }
+
+        .gallery-nav .next {
+            margin-left: 10px;
+            background: url('images/arrow-right.png') center right no-repeat;
+            padding-right: 21px;
+        }
+
+        #footer {
+            margin-top: 20px;
+            padding: 10px;
+            color: #999;
+        }
+
+        .pull-left { float: left; }
+        .pull-right { float: right; }
     </style>
     
     <script>
@@ -108,12 +142,16 @@
         <img data-src="https://dl.dropbox.com/u/1218282/slideshow/7.jpeg" />
     </div> <!-- .gallery -->
 
-    <div class="gallery-nav">
-        <span class="previous"> Previous</span> /
-        <span class="next">Next <span>
+    <div class="gallery-nav small">
+        <span class="previous">&nbsp;</span>
+        <span class="next"> &nbsp;</span>
     </div>
 
+</div> <!-- #content -->
 
+<div id="footer" class="small">
+    <span class="pull-left">Photography by <a href="http://fb.com/abhiomkar.photography">Abhinay Omkar</a>. Follow me <a href="http://twitter.com/abhiomkar">@abhiomkar</a></span>
+    <span class="pull-right">&copy; Abhinay Omkar, 2012.</span>
 </div>
 
 </body>
