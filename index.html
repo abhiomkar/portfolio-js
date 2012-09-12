@@ -74,6 +74,11 @@
             font-size: 12px;
         }
 
+        .hint {
+            color: #999;
+            padding: 10px;
+        }
+
         .gallery-nav {
             padding: 10px 15px;
             box-shadow: -3px -3px 7px #CCC;
@@ -104,6 +109,7 @@
             color: #999;
         }
 
+        .clearfix { clear: both; }
         .pull-left { float: left; }
         .pull-right { float: right; }
     </style>
@@ -147,6 +153,9 @@
         <img data-src="https://dl.dropbox.com/u/1218282/slideshow/7.jpeg" />
     </div> <!-- .gallery -->
 
+    <div class="small hint pull-right">
+        Hint: Use Arrow Keys or Slide to Navigate
+    </div>
     <div class="gallery-nav small">
         <span class="previous">&nbsp;</span>
         <span class="next"> &nbsp;</span>
@@ -154,6 +163,7 @@
 
 </div> <!-- #content -->
 
+<div class="clearfix"></div>
 <div id="footer" class="small">
     <span class="pull-left">Photography by <a href="http://fb.com/abhiomkar.photography">Abhinay Omkar</a>. Follow me <a href="http://twitter.com/abhiomkar">@abhiomkar</a></span>
     <span class="pull-right">&copy; Abhinay Omkar, 2012.</span>
