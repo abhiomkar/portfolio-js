@@ -18,12 +18,28 @@
 
     
     <style>
+        /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
         body {
             font-family: 'Raleway', cursive;
         }
 
-        h1 {
-            margin-bottom: 0;
+        #header {
+            margin-bottom: 10px;
+            box-shadow: -3px 2px 7px #CCC;
+        }
+
+        #gallery {
+            margin-left: 6px;
+        }
+
+        h1.logo-title {
+            margin-left: 15px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            display: inline-block;
+            font-size: 28px;
         }
 
         h1, h2, h3, h4 {
@@ -34,11 +50,19 @@
             font-size: 14px;
         }
 
+        .tagline {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
         .gallery-nav {
+            padding: 10px 15px;
+            box-shadow: -3px -2px 7px #CCC;
             font-family: Helvetica, Arial, sans-serif;
             margin-top: 10px;
             font-size: 12px;
             font-weight: bold;
+            color: #555;
         }
         .gallery-nav span {
             cursor: pointer;
@@ -67,8 +91,11 @@
 
 <body>
 
-<h1>Portfoliojs</h1>
-<p>A kick-ass jQuery plugin for gallery</p>
+<div id="header">
+    <h1 class="logo-title">Portfoliojs</h1>
+    <p class="tagline">A kick-ass jQuery plugin for gallery</p>
+</div>
+
 <div id="content">
 
     <div id="gallery">
