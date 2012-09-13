@@ -19,7 +19,8 @@
         height: '500px',
         width: '100%',
         lightbox: false,
-        showArrows: true
+        showArrows: true,
+        logger: false
     },
     currentViewingImage,
     totalLoaded = 0,
@@ -137,7 +138,7 @@
                 });
 
                 $(this).find('img').on('movestart', function(e) {
-                    console.log('movestart');
+                    console_.log('movestart');
                     if ((e.distX > e.distY && e.distX < -e.distY) ||
                         (e.distX < e.distY && e.distX > -e.distY)) {
                         e.preventDefault();
@@ -176,7 +177,7 @@
                         if (gallery[0].offsetWidth + gallery.scrollLeft() >= gallery[0].scrollWidth) {
 
                             if (totalLoaded < $(gallery).find('img').length) {
-                                console.log('scroll ended');
+                                console_.log('scroll ended');
                                 currentViewingImage = $(gallery).find('img[loaded=true]').last();
                                 portfolio.loadNextImages(6);
 
@@ -188,12 +189,12 @@
 
             next: function() {
 
-                // console.log($(currentViewingImage).nextAll('img[loaded=false]').first().data('position'), $(currentViewingImage).data('position'));
+                // console_.log($(currentViewingImage).nextAll('img[loaded=false]').first().data('position'), $(currentViewingImage).data('position'));
                 var distance = $(currentViewingImage).nextAll('img[loaded=false]').first().data('position') - $(currentViewingImage).data('position');
 
-                console.log(distance);
+                console_.log(distance);
                 if(distance < 4) {
-                    console.log('next: preload next 4 images');
+                    console_.log('next: preload next 4 images');
                     portfolio.loadNextImages(6);
                 }
 
@@ -202,7 +203,7 @@
                     // if on last image and if loop is on 
                     if(portfolio.loop) {
                         // go to first image 
-                        console.log('last', 'loop: on');
+                        console_.log('last', 'loop: on');
 
                         $(gallery).scrollTo(0, 500, {axis: 'x', easing: portfolio.easingMethod});
                         currentViewingImage = $(gallery).find('img').first();
@@ -216,7 +217,7 @@
                         }
                     }
                     else {
-                        console.log('last', 'loop: off');
+                        console_.log('last', 'loop: off');
                     }
                 }
 
@@ -238,18 +239,18 @@
                 // if next image is not yet loaded
                 else if ($(currentViewingImage).next().attr('loaded') === 'false') {
                     // show the spinner and prepare to load next images
-                    console.log('next images are being loaded...');
+                    console_.log('next images are being loaded...');
                 }
 
                 /*
                 if (gallery.offsetWidth + gallery.scrollLeft >= gallery.scrollWidth) {
-                    console.log('scrollEnd');
+                    console_.log('scrollEnd');
                     var spinner_target = $(currentViewingImage).after('<span class="spinner-container"></span>');
                     $(gallery).scrollTo($(currentViewingImage).data("offset-left") + 100, 500, {axis: 'x'});
                     portfolio.spinner(spinner_target);
                 }
                 */
-                console.log('next: current viewing image', currentViewingImage);
+                console_.log('next: current viewing image', currentViewingImage);
             },
 
             prev: function() {
@@ -270,7 +271,7 @@
                     }
                 }
 
-                console.log('prev: current viewing image', currentViewingImage);
+                console_.log('prev: current viewing image', currentViewingImage);
             },
 
             slideTo: function(img) {
@@ -287,7 +288,7 @@
                     $(gallery).find('img.active').animate({opacity: '1'});
                 }
 
-                console.log($(currentViewingImage));
+                console_.log($(currentViewingImage));
             },
 
             spinner: {
@@ -332,7 +333,7 @@
             },
 
             loadNextImages: function(count) {
-                    // console.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
+                    // console_.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
                 if (!imageLoadedCalled) {
                     var nextImages;
                     if(currentViewingImage === undefined) {
@@ -362,8 +363,8 @@
                      // on otherwords, filter only loading images
                      $(nextImages).imagesLoaded(function($img_loaded){
 
-                        console.log('images loaded:');
-                        console.log($img_loaded);
+                        console_.log('images loaded:');
+                        console_.log($img_loaded);
                         $img_loaded.each(function(index) {
                             var img = this;
                             $(img).data('offset-left', offset_left);
@@ -375,13 +376,13 @@
                             $(img).fadeIn('slow');
 
                             img_width = $(img).width();
-                            console.log('img_width: ', img_width);
+                            console_.log('img_width: ', img_width);
 
 
                             offset_left += img_width + 5;
 
                             totalLoaded += 1;
-                            // console.log('totalLoaded', totalLoaded)
+                            // console_.log('totalLoaded', totalLoaded)
 
                             $(img).data('width', img_width);
                             $(img).attr('loaded', 'true');
@@ -472,6 +473,7 @@
 
         $.extend(this, defaults, settings);
 
+        // keyboard navigation
         if (this.enableKeyboardNavigation) {
                 $(document).keydown(function(e) {
                         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
@@ -499,6 +501,21 @@
                                         break;
                         }
                 });
+        }
+
+        // logger
+        console_ = {
+            log: function() {
+                if (this.active) {
+                    // var l = [];
+                    for (var i=0, len=arguments.length; i < len; i++) {
+                        // l.push(arguments[i]);
+                        console.log(arguments[i]);
+                    }
+                    // console.log(l.join(' '));
+                }
+            },
+            active: portfolio.logger
         }
 
         return this;
