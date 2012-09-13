@@ -17,6 +17,7 @@
         loop: false,
         easingMethod: 'easeOutQuint',
         height: '500px',
+        width: '100%',
         lightbox: false,
         showArrows: true
     },
@@ -41,8 +42,9 @@
             init: function() {
 
                 // CSS Base
+                //
                 $(this).css({
-                    width: '100%',
+                    width: portfolio.width,
                     height: portfolio.height,
                     'overflow-x': 'scroll',
                     'overflow-y': 'hidden',
@@ -54,6 +56,22 @@
                     display: 'inline-block',
                     height: portfolio.height
                 });
+
+                if ($(window).width() <= 480) {
+                    // if mobile, reduce the gallery height to fit on screen.
+                    // 200px fixed height is good enough?
+                    
+                    // gallery
+                    $(this).css({
+                        width: '100%',
+                        height: '200px'
+                    });
+
+                    // gallery images
+                    $(this).find('img').css({ 
+                        height: '200px'
+                    });
+                }
 
                 $(this).find("img").css('display', 'none');
                 // end
