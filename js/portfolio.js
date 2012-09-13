@@ -73,7 +73,7 @@
                     $(this).data('position', index);
                 });
                 // end
-                
+
                 // spinner
                 // show spinner while the images are being loaded...
                 portfolio.spinner.show('100%');
@@ -95,6 +95,14 @@
                     portfolio.navigation.show();
                 }
 
+                // add a 5px space at the end
+                $(this).append('<div class="gallery-blank-space"></div>');
+                $('.gallery-blank-space').css({
+                    position: 'absolute',
+                    width: '5px',
+                    height: portfolio.height,
+                });
+
                 // LionBar
                 // $(this).lionbars();
 
@@ -115,8 +123,8 @@
                     if ((e.distX > e.distY && e.distX < -e.distY) ||
                         (e.distX < e.distY && e.distX > -e.distY)) {
                         e.preventDefault();
-                            portfolio.next();
-                    }
+                            // portfolio.next();
+                    } 
                 });
 
                 /* Click */
@@ -143,17 +151,20 @@
                 }); // click()
 
                 $(this).scroll(function() {
+                        if ($(gallery).find('img').last().attr('loaded') === 'true') {
+                            $('.gallery-blank-space').css({left: $(gallery).find('img').last().data('offset-left') + $(gallery).find('img').last().width() + 'px'});
+                        }
+
                         if (gallery[0].offsetWidth + gallery.scrollLeft() >= gallery[0].scrollWidth) {
 
                             if (totalLoaded < $(gallery).find('img').length) {
                                 console.log('scroll ended');
                                 currentViewingImage = $(gallery).find('img[loaded=true]').last();
                                 portfolio.loadNextImages(6);
+
                             }
                         }
                 });
-
-
 
             }, // init
 
@@ -169,6 +180,7 @@
                 }
 
                 if($(currentViewingImage).attr('last') === 'true') {
+
                     // if on last image and if loop is on 
                     if(portfolio.loop) {
                         // go to first image 
@@ -446,11 +458,22 @@
                 $(document).keydown(function(e) {
                         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
                         switch(key) {
+                                case 73: // 'i' key
+                                         // go to first slide
+                                        portfolio.slideTo($(gallery).find('img').first());
+                                        break;
+                                case 91: // 'a' key
+                                         // go to last slide
+                                        portfolio.slideTo($(gallery).find('img').last());
+                                        break;
+
+                                case 75: // 'k' key
                                 case 37: // left arrow
                                         portfolio.navigation.hide();
                                         portfolio.prev();
                                         e.preventDefault();
                                         break;
+                                case 74: // 'j' key
                                 case 39: // right arrow
                                         portfolio.navigation.hide();
                                         portfolio.next();
