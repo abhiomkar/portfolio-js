@@ -482,7 +482,7 @@
                                          // go to first slide
                                         portfolio.slideTo($(gallery).find('img').first());
                                         break;
-                                case 91: // 'a' key
+                                case 65: // 'a' key
                                          // go to last slide
                                         portfolio.slideTo($(gallery).find('img').last());
                                         break;
