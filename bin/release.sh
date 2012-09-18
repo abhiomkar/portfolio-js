@@ -4,7 +4,7 @@ mkdir -p portfoliojs
 mkdir -p portfoliojs/js
 mkdir -p portfoliojs/css
 
-sed '/google_analytics/d' index.html > portfoliojs/index.html
+sed -e '/sedd_start/,/sedd_stop/ d' -e '/sed_del/ d' index.html portfoliojs/index.html
 cp js/portfolio.min.js portfoliojs/js/
 cp css/bootstrap.min.css portfoliojs/css/
 

@@ -334,6 +334,8 @@
 
             loadNextImages: function(count) {
                     // console_.log('loading...', totalLoaded, count, $(gallery).find(".photo img").slice(totalLoaded, totalLoaded + count));
+                console_.log($(this).attr('id'), offset_left);
+                console_.log($(this).attr('id'), imageLoadedCalled);
                 if (!imageLoadedCalled) {
                     var nextImages;
                     if(currentViewingImage === undefined) {
@@ -367,6 +369,7 @@
                         console_.log($img_loaded);
                         $img_loaded.each(function(index) {
                             var img = this;
+                            console_.log($(gallery).attr('id'), offset_left);
                             $(img).data('offset-left', offset_left);
 
                             // Inorder to fadeIn effect to work, make the new
