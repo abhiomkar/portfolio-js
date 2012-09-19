@@ -8,6 +8,17 @@
  *
  * */
 
+// TODO
+// * get rid of absolute / left usage in the script
+// * support for multiple galleries - what happens to keyboard navigation if
+// page has multiple galleries?
+// * Lightbox support
+// * Indication or notify when user reaches end of the gallery (Last image).
+//
+// BUGS
+// - when using keyboard arrow keys to navigate - active class is being added to
+// two image elements
+
 ;(function($) {
 
     var defaults = {
@@ -19,8 +30,8 @@
         height: '500px',
         width: '100%',
         lightbox: false,
-        showArrows: true,
-        logger: false
+        showArrows: false,
+        logger: true
     },
     currentViewingImage,
     totalLoaded = 0,
@@ -49,11 +60,11 @@
                     height: portfolio.height,
                     'overflow-x': 'scroll',
                     'overflow-y': 'hidden',
+                    'white-space': 'nowrap',
                     position: 'relative'
                 });
 
                 $(this).find('img').css({
-                    position: 'absolute',
                     display: 'inline-block',
                     height: portfolio.height
                 });
@@ -115,7 +126,7 @@
                 }
 
                 // add a 5px space at the end
-                $(this).append('<div class="gallery-blank-space"></div>');
+                // $(this).append('<div class="gallery-blank-space"></div>');
                 $('.gallery-blank-space').css({
                     position: 'absolute',
                     width: '5px',
