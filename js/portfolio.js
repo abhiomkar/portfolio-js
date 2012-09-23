@@ -408,7 +408,6 @@
                     });
                     $(gallery).next('.gallery-arrow-right').css({
                         position: 'absolute',
-                        // left: $(gallery).width() - 50,
                         right: '0',
                         top: $(gallery).position().top,
                         height: portfolio.height,
