@@ -6,6 +6,15 @@
  * Copyright (c) 2012 Abhinay Omkar (http://abhiomkar.in) @abhiomkar
  * Licensed under the MIT License:
  *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Dependencies
+ *  - jQuery: http://jquery.com
+ *  - jQuery easing: http://gsgd.co.uk/sandbox/jquery/easing
+ *  - jQuery touch swipe: http://labs.skinkers.com/touchSwipe
+ *  - jQuery imagesLoaded: http://desandro.github.com/imagesloaded
+ *  - jQuery scrollTo: http://flesler.blogspot.in/2007/10/jqueryscrollto.html
+ *  - JS Spin: http://fgnass.github.com/spin.js
+
  * */
 
 ;(function($) {
