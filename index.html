@@ -124,30 +124,6 @@
             .tagline { margin-bottom: 10px; }
         }
 
-        /* 
-        #footer .pull-left {
-            line-height: 22px;
-        }
-        */
-
-        /* 
-        .gallery-nav span {
-            cursor: pointer;
-            background: #ccc;
-        }
-
-        .gallery-nav .previous {
-            background: url('images/arrow-left.png') center left no-repeat;
-            padding-left: 21px;
-        }
-
-        .gallery-nav .next {
-            margin-left: 10px;
-            background: url('images/arrow-right.png') center right no-repeat;
-            padding-right: 21px;
-        }
-        */
-
      </style>
     
     <script>
@@ -203,6 +179,7 @@
                 <li>smart pre-loading</li>
                 <li>set custom height & width of gallery</li>
                 <li>set custom easingMethods for slide animation</li>
+                <li>multiple gallery support</li>
                 <li>lightbox</li>
                 <li>keyboard navigation</li>
                 <li>renders according to the device width. including mobile devices.</li>
@@ -222,8 +199,8 @@
                     <br/>
                     <pre>&lt;!-- jQuery --&gt;
 &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;!-- portfoliojs --&gt;
-&lt;script &quot;js/portfolio.min.js&quot;&gt;&lt;/script&gt;</pre>
+&lt;!-- portfoliojs (unified with all dependencies) --&gt;
+&lt;script &quot;js/portfolio.pack.min.js&quot;&gt;&lt;/script&gt;</pre>
                     <li>Add your images in gallery container and add an id to your gallery</li>
                     <br/>
                     <pre>&lt;div id=&quot;gallery&quot;&gt;
@@ -282,10 +259,26 @@ p = $('#gallery').portfolio({
 
         <hr>
 
+        <h2>Dependencies</h2>
+        <div class="row-fluid">
+            <div class="span12">
+                <ul>
+                    <li><a href="http://gsgd.co.uk/sandbox/jquery/easing">jQuery easing</a></li>
+                    <li><a href="http://labs.skinkers.com/touchSwipe">jQuery touch Swipe</a></li>
+                    <li><a href="http://desandro.github.com/imagesloaded">jQuery imageLoaded</a></li>
+                    <li><a href="http://flesler.blogspot.in/2007/10/jqueryscrollto.html">jQuery scrollTo</a></li>
+                    <li><a href="http://fgnass.github.com/spin.js">JS Spin</a></li>
+                </ul>
+            </div>
+            <div =-0
+        </div>
+
+        <hr>
+
         <h2>License</h2>
         <div class="row-fluid">
             <div class="span12">
-                <p>MIT License</p>
+                <p><a href="http://opensource.org/licenses/mit-license.php">MIT License</a></p>
             </div>
         </div>
 
