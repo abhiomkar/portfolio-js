@@ -20,7 +20,7 @@
 ;(function($) {
 
     $.fn.portfolio = function(settings) {
-        
+
     // default values 
     var defaults = {
         autoplay: false,
@@ -53,13 +53,13 @@
             portfolio.scrollToOptions={axis: 'x', easing: portfolio.easingMethod, offset: -4}
 
             // Responsive for Mobile
-            if ($(window).width() <= 700) {
-                // if mobile, reduce the gallery height to fit on screen
-                // 200px fixed height is good enough?
+            // if ($(window).width() <= 700) {
+            //     // if mobile, reduce the gallery height to fit on screen
+            //     // 200px fixed height is good enough?
                 
-                // override gallery height
-                portfolio.height = '200px';
-            }
+            //     // override gallery height
+            //     portfolio.height = '200px';
+            // }
 
             // CSS Base
             $(this).css({
@@ -175,20 +175,29 @@
                         }
                     }
             });
-
-            // Window Resize
-            $(window).resize(function() {
-                if ($(window).width() <= 700 && $(gallery).find('img').first().height()!==200) {
-                    $(gallery).css({height: '200px'});
-                    $(gallery).find('img').css({height: '200px'});
-                    $(gallery).find('.gallery-arrow-left, .gallery-arrow-right').css({height: '200px'});
-                }
-                else if ($(window).width() > 700 && $(gallery).find('img').first().height()===200) {
+            var resize_func = function() {
+                if (portfolio.height === 'dynamic') {
+                    if ($(window).height() < $(window).width()) {
+                        $(gallery).css({margin: '0px 0px 0px 0px', height: $(window).height()+'px', width: 'auto'});
+                        $(gallery).find('img').css({height: $(window).height()+'px', 
+                                                     width: 'auto'});
+                        $(gallery).find('.gallery-arrow-left, .gallery-arrow-right').css({height: $(window).height()+'px', width: 'auto'});
+                    } else {
+                        $(gallery).css({margin: '10% 0px 0px 0px', height: 'auto', width: $(window).width()+'px'});
+                        $(gallery).find('img').css({margin_top: '0px', height: 'auto', width: $(window).width()+'px'});
+                        $(gallery).find('.gallery-arrow-left, .gallery-arrow-right').css({height: 'auto', 
+                                                                                          width: $(window).width()+'px'});
+                    }
+                } else {
                     $(gallery).css({height: portfolio.height});
                     $(gallery).find('img').css({height: portfolio.height});
                     $(gallery).find('.gallery-arrow-left, .gallery-arrow-right').css({height: portfolio.height});
                 }
-            });
+            };
+
+            // Window Resize
+            $(window).resize(resize_func);
+            resize_func();
 
         }, // init
 
