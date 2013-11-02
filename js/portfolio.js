@@ -195,7 +195,7 @@
         next: function() {
 
             var cur_img = $(gallery).find('img.active'),
-                next_img = $(gallery).find('img.active').next();
+                next_img = cur_img.parent("a").length > 0 ? cur_img.parent().next().find("img") : cur_img.next();
 
             if($(cur_img).attr('last') === 'true') {
 
@@ -251,7 +251,7 @@
 
         prev: function() {
             var cur_img = $(gallery).find('img.active'),
-                prev_img = $(gallery).find('img.active').prev();
+                prev_img = cur_img.parent("a").length > 0 ? cur_img.parent().prev().find("img") : cur_img.prev();
 
             if($(cur_img).attr('first') === 'true') {
                 // If on first Image stay there, do not scroll
