@@ -20,8 +20,8 @@
 ;(function($) {
 
     $.fn.portfolio = function(settings) {
-        
-    // default values 
+
+    // default values
     var defaults = {
         autoplay: false,
         firstLoadCount: 4,
@@ -56,7 +56,7 @@
             if ($(window).width() <= 700) {
                 // if mobile, reduce the gallery height to fit on screen
                 // 200px fixed height is good enough?
-                
+
                 // override gallery height
                 portfolio.height = '200px';
             }
@@ -97,7 +97,7 @@
 
             // load first 4 images
             portfolio.loadNextImages(portfolio.firstLoadCount);
-            
+
             // First Image
             $(this).find("img").first().addClass('active');
 
@@ -138,7 +138,7 @@
                     e.preventDefault();
                         // TODO: touchstart? the gallery should follow the
                         // finger on touchstart
-                } 
+                }
             });
 
             /* Click */
@@ -163,7 +163,7 @@
                     }
 
                     // if (gallery[0].offsetWidth + gallery.scrollLeft() >= gallery[0].scrollWidth) // scroll end condition
-                    
+
                     // scroll amount is greater than 60%
                     if ((gallery[0].offsetWidth + gallery.scrollLeft())*100 / gallery[0].scrollWidth > 60) {
 
@@ -199,9 +199,9 @@
 
             if($(cur_img).attr('last') === 'true') {
 
-                // if on last image and if loop is on 
+                // if on last image and if loop is on
                 if(portfolio.loop) {
-                    // go to first image 
+                    // go to first image
                     console_.log('last', 'loop: on');
 
                     $(gallery).scrollTo(0, 500, portfolio.scrollToOptions);
@@ -331,7 +331,7 @@
 
             if (!imageLoadedCalled) {
                 var nextImages;
-                
+
                 // load first few pictures - gallery init
                 nextImages = $(gallery).find("img[loaded=false]").slice(0, count);
                 $(nextImages).each(function(index) {
@@ -430,7 +430,7 @@
                     $('.gallery-arrow-left, .gallery-arrow-right').hover(function(){
                         // Mouse In
                         $(this).css({ 'opacity': '1' });
-                    }, 
+                    },
                     function() {
                         // Mouse Out
                         $(this).css({ 'opacity': '0.5' });
@@ -444,7 +444,7 @@
                     portfolio.navigation.created = true;
 
                 } // if.. else..
-            }, // show() 
+            }, // show()
 
             hide: function() {
                 $('.gallery-arrow-left, .gallery-arrow-right').fadeOut();
@@ -490,7 +490,7 @@
                 // var l = [];
                 for (var i=0, len=arguments.length; i < len; i++) {
                     // l.push(arguments[i]);
-                    console.log(arguments[i]);
+                    //console.log(arguments[i]);
                 }
                 // console.log(l.join(' '));
             }
