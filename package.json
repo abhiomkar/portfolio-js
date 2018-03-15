@@ -1,0 +1,16 @@
+{
+  "name": "popmotion-hello",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "node-sass": "^4.7.2",
+    "popmotion": "^8.1.7"
+  }
+}
