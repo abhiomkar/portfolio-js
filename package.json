@@ -1,6 +1,6 @@
 {
   "name": "portfolio-js",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Tiny JavaScript carousel library with horizontal scrolling and all the goodness.",
   "main": "dist/portfolio.js",
   "module": "dist/portfolio.esm.js",
