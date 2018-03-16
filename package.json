@@ -1,16 +1,17 @@
 {
-  "name": "popmotion-hello",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "portfolio-js",
+  "version": "2.0.0",
+  "description": "Tiny JavaScript carousel library with horizontal scrolling and all the goodness.",
+  "main": "dist",
   "scripts": {
+    "prepare": "npm run build",
+    "build": "parcel build src/portfolio.js -d dist/ && parcel build src/portfolio.scss -d dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "lodash": "^4.17.5",
+  "author": "Abhinay Omkar",
+  "license": "MIT",
+  "devDependencies": {
     "node-sass": "^4.7.2",
-    "popmotion": "^8.1.7"
+    "parcel-bundler": "^1.6.2"
   }
 }
