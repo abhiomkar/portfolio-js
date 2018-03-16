@@ -2,3 +2,4 @@ src
 .cache
 .vscode
 examples
+node_modules
