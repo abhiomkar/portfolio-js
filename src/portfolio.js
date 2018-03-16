@@ -1,3 +1,5 @@
+import './portfolio.scss';
+
 class Portfolio {
   constructor(portfolioEl) {
     this.portfolioEl = portfolioEl;
