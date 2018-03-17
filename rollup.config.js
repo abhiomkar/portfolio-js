@@ -4,29 +4,33 @@ import cssnano from 'cssnano';
 import url from 'postcss-url';
 import babel from 'rollup-plugin-babel';
 
-export default [{
-  input: './src/portfolio.js',
-  output: [{
-    file: './dist/portfolio.js',
-    format: 'cjs'
-  },
+export default [
   {
-    file: './dist/portfolio.umd.js',
-    format: 'umd',
-    name: 'portfolio'
+    input: './src/portfolio.js',
+    output: [
+      {
+        file: './dist/portfolio.js',
+        format: 'cjs',
+      },
+      {
+        file: './dist/portfolio.umd.js',
+        format: 'umd',
+        name: 'Portfolio',
+      },
+      {
+        file: './dist/portfolio.es.js',
+        format: 'es',
+      },
+    ],
+    plugins: [
+      babel({
+        exclude: ['node_modules/**,', '**/*.scss'],
+      }),
+      resolve(),
+      postcss({
+        extract: true,
+        plugins: [cssnano, url({url: 'inline'})],
+      }),
+    ],
   },
-  {
-    file: './dist/portfolio.esm.js',
-    format: 'es'
-  }],
-  plugins: [
-    babel({
-      exclude: ['node_modules/**,', '**/*.scss']
-    }),
-    resolve(),
-    postcss({
-      extract: true,
-      plugins: [cssnano, url({url: 'inline'})]
-    })
-  ]
-}];
+];

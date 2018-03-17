@@ -2,15 +2,26 @@
   "name": "portfolio-js",
   "version": "2.1.0",
   "description": "Tiny JavaScript carousel library with horizontal scrolling and all the goodness.",
+  "keywords": ["gallery", "carousel", "portfolio", "horizontal scrolling", "photos", "plugin", "mobile"],
+  "homepage": "http://portfoliojs.com",
+  "bugs": {
+    "url": "https://github.com/abhiomkar/portfolio-js/issues"
+  },
   "main": "dist/portfolio.js",
-  "module": "dist/portfolio.esm.js",
+  "module": "dist/portfolio.es.js",
+  "jsnext:main": "dist/portfolio.es.js",
   "browser": "dist/portfolio.umd.js",
+  "source": "src/portfolio.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhiomkar/portfolio-js"
+  },
   "scripts": {
     "prepare": "npm run build",
     "build": "rollup --config",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Abhinay Omkar",
+  "author": "Abhinay Omkar <abhiomkar@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
