@@ -8,7 +8,7 @@ Tiny JavaScript carousel library with horizontal scrolling and all the goodness.
 - Very fast & easy to setup
 - Vanilla JavaScript (No jQuery dependency)
 
-**Demo**: http://portfoliojs.com
+**Demo**: https://portfoliojs.com
 
 Install
 -------
