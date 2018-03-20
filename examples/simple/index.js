@@ -1,3 +1,3 @@
-import Portfolio from '../../src/portfolio-scrollbar';
+import Portfolio from '../../src/portfolio';
 
 new Portfolio(document.querySelector('.carousel'));
