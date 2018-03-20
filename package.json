@@ -1,8 +1,16 @@
 {
   "name": "portfolio-js",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Tiny JavaScript carousel library with horizontal scrolling and all the goodness.",
-  "keywords": ["gallery", "carousel", "portfolio", "horizontal scrolling", "photos", "plugin", "mobile"],
+  "keywords": [
+    "gallery",
+    "carousel",
+    "portfolio",
+    "horizontal scrolling",
+    "photos",
+    "plugin",
+    "mobile"
+  ],
   "homepage": "http://portfoliojs.com",
   "bugs": {
     "url": "https://github.com/abhiomkar/portfolio-js/issues"
