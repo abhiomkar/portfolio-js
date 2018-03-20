@@ -92,7 +92,9 @@ class Portfolio {
   }
 
   getNextImages(size) {
-    const images = this.portfolioEl.querySelectorAll(`.${cssClasses.ITEM} > img[data-src]`);
+    const images = this.portfolioEl.querySelectorAll(
+      `.${cssClasses.ITEM} > img[data-src]`,
+    );
 
     if (size === undefined) {
       return Array.from(images);
@@ -120,7 +122,9 @@ class Portfolio {
         (event) => {
           // Scroll to clicked / touched item.
           if (!this.didSliderMove) {
-            setTimeout(() => this.scrollTo(event.target.closest(`${cssClasses.ITEM}`), 50));
+            setTimeout(() =>
+              this.scrollTo(event.target.closest(`.${cssClasses.ITEM}`), 50),
+            );
             this.didSliderMove = false;
             return;
           }
