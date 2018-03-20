@@ -1,9 +1,17 @@
 import './portfolio.scss';
 
+const cssClasses = {
+  SLIDER: 'pf-slider',
+  ITEM: 'pf-item',
+  NAVIGATION_BUTTON_LEFT: 'pf-navigation-button-left',
+  NAVIGATION_BUTTON_RIGHT: 'pf-navigation-button-right',
+  PLACEHOLDER_ITEM: 'pf-placeholder-item',
+};
+
 class Portfolio {
   constructor(portfolioEl) {
     this.portfolioEl = portfolioEl;
-    this.slider = portfolioEl.querySelector('.slider');
+    this.slider = portfolioEl.querySelector(`.${cssClasses.SLIDER}`);
 
     this.sliderWidth;
     this.didSliderMove = false;
@@ -49,8 +57,8 @@ class Portfolio {
   addNavigationButton(navigationDirection) {
     const className =
       navigationDirection === 'left'
-        ? 'navigation-button-left'
-        : 'navigation-button-right';
+        ? cssClasses.NAVIGATION_BUTTON_LEFT
+        : cssClasses.NAVIGATION_BUTTON_RIGHT;
     const ariaLabel =
       navigationDirection === 'left'
         ? 'See previous images'
@@ -77,14 +85,14 @@ class Portfolio {
 
   getPlaceholderItem() {
     const placeholderItem = document.createElement('div');
-    placeholderItem.classList.add('placeholder-item');
+    placeholderItem.classList.add(cssClasses.PLACEHOLDER_ITEM);
     this.placeholderItem = placeholderItem;
 
     return placeholderItem;
   }
 
   getNextImages(size) {
-    const images = this.portfolioEl.querySelectorAll('.item > img[data-src]');
+    const images = this.portfolioEl.querySelectorAll(`.${cssClasses.ITEM} > img[data-src]`);
 
     if (size === undefined) {
       return Array.from(images);
@@ -112,7 +120,7 @@ class Portfolio {
         (event) => {
           // Scroll to clicked / touched item.
           if (!this.didSliderMove) {
-            setTimeout(() => this.scrollTo(event.target.closest('.item'), 50));
+            setTimeout(() => this.scrollTo(event.target.closest(`${cssClasses.ITEM}`), 50));
             this.didSliderMove = false;
             return;
           }

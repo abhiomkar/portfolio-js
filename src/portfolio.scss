@@ -1,4 +1,4 @@
-.carousel {
+.pf-carousel {
   div, img, span, a {
     box-sizing: border-box;
   }
@@ -17,7 +17,7 @@
     }
   }
 
-  .slider {
+  .pf-slider {
     overflow-y: scroll; /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
     display: flex;
@@ -25,7 +25,7 @@
     height: 100%;
   }
 
-  .item {
+  .pf-item {
     border-radius: 3px;
     margin-right: 4px;
     display: none;
@@ -34,8 +34,8 @@
     overflow: hidden;
   }
 
-  &:not(.is-ready) .item:not(.is-loaded),
-  .placeholder-item {
+  &:not(.is-ready) .pf-item:not(.is-loaded),
+  .pf-placeholder-item {
     display: block;
     height: 100%;
     width: 360px;
@@ -45,14 +45,14 @@
     animation: blink 2s ease-in-out infinite;
   }
 
-  &.is-ready .item.is-loaded {
+  &.is-ready .pf-item.is-loaded {
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
   }
 
   @media all and (max-width: 700px) {
-    .placeholder-item {
+    .pf-placeholder-item {
       width: 180px;
     }
   }  
@@ -76,17 +76,17 @@
   
   }
 
-  .item-image {
+  .pf-item-image {
     height: 100%;
     width: auto;
     display: none;
   }
 
-  &.is-ready .item-image {
+  &.is-ready .pf-item-image {
     display: inline-block;
   }
 
-  .item-description {
+  .pf-item-description {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -99,12 +99,12 @@
     display: none;
   }
 
-  &.is-ready .item-description {
+  &.is-ready .pf-item-description {
     display: block;
   }
 
-  .navigation-button-left,
-  .navigation-button-right {
+  .pf-navigation-button-left,
+  .pf-navigation-button-right {
     background: url('./images/ic_keyboard_arrow_right_white_48px.svg') transparent no-repeat;
     height: 48px;
     width: 48px;
@@ -120,31 +120,31 @@
   }
 
   @media all and (max-width: 700px) {
-    .navigation-button-left,
-    .navigation-button-right {
+    .pf-navigation-button-left,
+    .pf-navigation-button-right {
       background-size: auto;
     }
   }
 
-  .navigation-button-left {
+  .pf-navigation-button-left {
     left: 12px;
     transform: scaleX(-1) translateY(-50%);
   }
 
-  .navigation-button-right {
+  .pf-navigation-button-right {
     right: 12px;
   }
 
-  &:hover .navigation-button-left,
-  &:hover .navigation-button-right {
+  &:hover .pf-navigation-button-left,
+  &:hover .pf-navigation-button-right {
     display: block;
   }
 
-  &.at-left-edge .navigation-button-left {
+  &.at-left-edge .pf-navigation-button-left {
     display: none;
   }
 
-  &.at-right-edge .navigation-button-right {
+  &.at-right-edge .pf-navigation-button-right {
     display: none;
   }
 }
