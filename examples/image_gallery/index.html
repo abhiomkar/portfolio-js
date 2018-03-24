@@ -2,101 +2,105 @@
 <html>
 <head>
   <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-  <link rel="stylesheet" href="https://unpkg.com/portfolio-js@2.1.0/dist/portfolio.css" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
-      font-size: 14px;
-    }
-  </style>
 </head>
+<link rel="stylesheet" href="../../dist/portfolio.css" />
+<link rel="stylesheet" href="./style.css" />
 <body>
-  <div class="pen">
-    <h1>Portfolio.js</h1>
-    <div class="pf-carousel my-image-gallery" id="carousel">
-      <div class="pf-slider">
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/malte-schmidt-483114-unsplash.jpg?alt=media&token=1d02c9a7-e8b0-4b48-b97a-bbc2b5a38b79" />
-          <div class="pf-item-description">
-            Photo by Malte Schmidt on Unsplash
-          </div>
-        </div>
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/paul-larkin-524582-unsplash.jpg?alt=media&token=ab213354-868a-48f8-97ab-036fd14ab0c1" />
-          <div class="pf-item-description">
-            Photo by Paul Larkin on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/ryan-searle-345035-unsplash.jpg?alt=media&token=e9e1e2c1-d24f-471f-ae45-d3dd1f209661" />
-          <div class="pf-item-description">
-            Photo by Ryan Searle on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/jake-blucker-316192-unsplash.jpg?alt=media&token=96c1f7f1-efb1-46c3-97fd-c642f160b85e" />
-          <div class="pf-item-description">
-            Photo by Jake Blucker on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/sherman-yang-503440-unsplash.jpg?alt=media&token=def9445a-82b9-435c-a77f-2589fe7c7cec" />
-          <div class="pf-item-description">
-            Photo by Sherman Yang on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/benjamin-voros-575800-unsplash.jpg?alt=media&token=72c548e1-5cdc-468c-9add-c5f82737fa5b" />
-          <div class="pf-item-description">
-            Photo by Benjamin Voros on Unsplash
-          </div>
-        </div>        
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/mona-eendra-297652-unsplash.jpg?alt=media&token=6aa2d1db-ad40-4193-838c-53c8b142675f" />
-          <div class="pf-item-description">
-            Photo by Mona Eendra on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/uros-jovicic-549695-unsplash.jpg?alt=media&token=dbad2bb8-e634-487e-aa4f-ab3ff02c64af" />
-          <div class="pf-item-description">
-            Photo by Uroš Jovičić on Unsplash
-          </div>
-        </div>
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/casey-horner-343980-unsplash.jpg?alt=media&token=2797e0f2-5a42-4f4e-9fb2-2c5a350d2abc" />
-          <div class="pf-item-description">
-            Photo by Casey Horner on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/kazuend-25771-unsplash.jpg?alt=media&token=457b49a0-7781-4164-a9a5-159717f29695" />
-          <div class="pf-item-description">
-            Photo by kazuend on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/ivana-cajina-393718-unsplash.jpg?alt=media&token=b42c436c-0b01-4ca2-a82f-2475af5000b4" />
-          <div class="pf-item-description">
-            Photo by Ivana Cajina on Unsplash
-          </div>
-        </div>  
-        <div class="pf-item">
-          <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/benjamin-behre-551370-unsplash.jpg?alt=media&token=64516f3c-1754-4674-bc67-9f91066c1c71" />
-          <div class="pf-item-description">
-            Photo by Benjamin Behre on Unsplash
-          </div>
-        </div>  
-      </div>
+  <div class="content-container main-header">
+    <h1 class="main-title">Portfolio.js</h1>
+    <h2 class="main-subtitle">Tiny JavaScript carousel library with horizontal scrolling and all the goodness.</h2>
+    <div class="main-nav">
+      <a href="https://github.com/abhiomkar/portfolio-js#portfoliojs">Documentation</a>
+      <a href="https://github.com/abhiomkar/portfolio-js#install">Download</a>
     </div>
   </div>
-  <script src="https://unpkg.com/portfolio-js@latest/dist/portfolio.umd.js"></script>
-  <script>
-    window.addEventListener('load', function() {
-      new Portfolio(document.querySelector('.my-image-gallery'));
-    });
-  </script>
+  <div class="pf-carousel my-image-gallery">
+    <div class="pf-slider">
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/malte-schmidt-483114-unsplash.jpg?alt=media&token=1d02c9a7-e8b0-4b48-b97a-bbc2b5a38b79" />
+        <div class="pf-item-description">
+          Photo by Malte Schmidt on Unsplash
+        </div>
+      </div>
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/paul-larkin-524582-unsplash.jpg?alt=media&token=ab213354-868a-48f8-97ab-036fd14ab0c1" />
+        <div class="pf-item-description">
+          Photo by Paul Larkin on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/ryan-searle-345035-unsplash.jpg?alt=media&token=e9e1e2c1-d24f-471f-ae45-d3dd1f209661" />
+        <div class="pf-item-description">
+          Photo by Ryan Searle on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/jake-blucker-316192-unsplash.jpg?alt=media&token=96c1f7f1-efb1-46c3-97fd-c642f160b85e" />
+        <div class="pf-item-description">
+          Photo by Jake Blucker on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/sherman-yang-503440-unsplash.jpg?alt=media&token=def9445a-82b9-435c-a77f-2589fe7c7cec" />
+        <div class="pf-item-description">
+          Photo by Sherman Yang on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/benjamin-voros-575800-unsplash.jpg?alt=media&token=72c548e1-5cdc-468c-9add-c5f82737fa5b" />
+        <div class="pf-item-description">
+          Photo by Benjamin Voros on Unsplash
+        </div>
+      </div>        
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/mona-eendra-297652-unsplash.jpg?alt=media&token=6aa2d1db-ad40-4193-838c-53c8b142675f" />
+        <div class="pf-item-description">
+          Photo by Mona Eendra on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/uros-jovicic-549695-unsplash.jpg?alt=media&token=dbad2bb8-e634-487e-aa4f-ab3ff02c64af" />
+        <div class="pf-item-description">
+          Photo by Uroš Jovičić on Unsplash
+        </div>
+      </div>
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/casey-horner-343980-unsplash.jpg?alt=media&token=2797e0f2-5a42-4f4e-9fb2-2c5a350d2abc" />
+        <div class="pf-item-description">
+          Photo by Casey Horner on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/kazuend-25771-unsplash.jpg?alt=media&token=457b49a0-7781-4164-a9a5-159717f29695" />
+        <div class="pf-item-description">
+          Photo by kazuend on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/ivana-cajina-393718-unsplash.jpg?alt=media&token=b42c436c-0b01-4ca2-a82f-2475af5000b4" />
+        <div class="pf-item-description">
+          Photo by Ivana Cajina on Unsplash
+        </div>
+      </div>  
+      <div class="pf-item">
+        <img class="pf-item-image" data-src="https://firebasestorage.googleapis.com/v0/b/portfolio-js-a868f.appspot.com/o/benjamin-behre-551370-unsplash.jpg?alt=media&token=64516f3c-1754-4674-bc67-9f91066c1c71" />
+        <div class="pf-item-description">
+          Photo by Benjamin Behre on Unsplash
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <div class="content-container">
+    <div class="content-heading">What's included?</div>
+    <ul class="feature-list">
+      <li>Lazy-load images on scroll
+      <li>Scroll animation on item click
+      <li>Responsiveness
+      <li>Very fast & easy to setup
+      <li>Vanilla JavaScript (No jQuery dependency)
+    </ul>
+  </div>
+  <script src="./index.js"></script>
 </body>
 </html>

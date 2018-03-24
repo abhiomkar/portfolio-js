@@ -1,8 +1,11 @@
-import postcss from 'rollup-plugin-postcss';
-import resolve from 'rollup-plugin-node-resolve';
 import cssnano from 'cssnano';
 import url from 'postcss-url';
+import postcss from 'rollup-plugin-postcss';
+import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import serve from 'rollup-plugin-serve';
+
+const production = !process.env.ROLLUP_WATCH;
 
 export default [
   {
@@ -32,5 +35,5 @@ export default [
         plugins: [cssnano, url({url: 'inline'})],
       }),
     ],
-  },
+  }
 ];
