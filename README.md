@@ -66,11 +66,21 @@ Deploy (Homepage)
 
 Instructions to deploy homepage - portfoliojs.com.
 
-    git checkout gh-pages # Create new branch if it doesn't exist.
-    npm install && npm run build-demo
-    echo "portfoliojs.com" > CNAME
-    git add . && git commit -am "Releasing demo page."
-    git push origin gh-pages
+- Required only for first time
+
+      git branch gh-pages
+      echo "portfoliojs.com" > CNAME
+
+- Updating existing page
+
+      git checkout gh-pages
+      git merge master
+      npm install && npm run build-demo
+
+- Add Google Analytics tracking [code](https://analytics.google.com/analytics/web/#/a34821391w62481846p64040568/admin/tracking/tracking-code/) and push to remote
+
+      git add . && git commit -am "Releasing updated demo page."
+      git push origin gh-pages
 
 Author
 ------
