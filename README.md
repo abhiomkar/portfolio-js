@@ -61,6 +61,17 @@ Once the assets are included as mentioned in install section you can activate Po
 
     new Portfolio('.my-image-gallery');
 
+Deploy (Homepage)
+-----------------
+
+Instructions to deploy homepage - portfoliojs.com.
+
+    git checkout gh-pages # Create new branch if it doesn't exist.
+    npm install && npm run build-demo
+    echo "portfoliojs.com" > CNAME
+    git add . && git commit -am "Releasing demo page."
+    git push origin gh-pages
+
 Author
 ------
 Abhinay Omkar
