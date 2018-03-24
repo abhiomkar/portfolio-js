@@ -26,7 +26,7 @@
   },
   "scripts": {
     "prepare": "npm run build",
-    "build": "rollup --config && parcel build examples/image_gallery/index.html -d demo/",
+    "build": "rollup --config && parcel build examples/image_gallery/index.html -d demo/ --public-url ./ --no-minify",
     "dev": "parcel examples/image_gallery/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
