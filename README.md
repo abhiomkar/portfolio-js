@@ -61,6 +61,15 @@ Once the assets are included as mentioned in install section you can activate Po
 
     new Portfolio('.my-image-gallery');
 
+Publish
+-------
+
+Publishing [package](https://www.npmjs.com/package/portfolio-js) to npm repository.
+
+    npm install
+    npm version patch # patch|minor|major
+    npm publish
+
 Deploy (Homepage)
 -----------------
 
