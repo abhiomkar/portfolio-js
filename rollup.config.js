@@ -1,6 +1,5 @@
 import url from 'postcss-url';
 import postcss from 'rollup-plugin-postcss';
-import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 
 export default [
@@ -25,7 +24,6 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
       babel({
         exclude: ['node_modules/**,', '**/*.scss'],
       }),
